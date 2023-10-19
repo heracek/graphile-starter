@@ -3,6 +3,7 @@ import { ApolloError } from "@apollo/client";
 import { AuthRestrict, SharedLayout } from "@app/components";
 import { useForgotPasswordMutation, useSharedQuery } from "@app/graphql";
 import { extractError, getCodeFromError } from "@app/lib";
+import type { InputRef } from "antd";
 import { Alert, Button, Form, Input } from "antd";
 import { useForm } from "antd/lib/form/Form";
 import { NextPage } from "next";
@@ -39,7 +40,7 @@ const ForgotPassword: NextPage = () => {
     [forgotPassword, setError]
   );
 
-  const focusElement = useRef<Input>(null);
+  const focusElement = useRef<InputRef>(null);
   useEffect(
     () => void (focusElement.current && focusElement.current!.focus()),
     [focusElement]
@@ -109,9 +110,7 @@ const ForgotPassword: NextPage = () => {
         </Form.Item>
         <Form.Item>
           <p>
-            <Link href="/login">
-              <a>Remembered your password? Log in.</a>
-            </Link>
+            <Link href="/login">Remembered your password? Log in.</Link>
           </p>
         </Form.Item>
       </Form>
